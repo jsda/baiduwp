@@ -20,7 +20,7 @@ headers:{
 [acgotaku/BaiduExporter](https://github.com/acgotaku/BaiduExporter): send to aria2
 
 
-原项目https://github.com/TkzcM/baiduwp
+# 原项目https://github.com/TkzcM/baiduwp
 
 把index.js文件里的代码复制粘贴到cf的workers里面https://dash.cloudflare.com/
 
