@@ -221,7 +221,7 @@ const generate = async request => {
       headers:{
         'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.514.1919.810 Safari/537.36',
         'Cookie':'BDUSS=**INPUT YOUR BDUSS HERE**; '
-            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=**INPUT YOUR BDCLND HERE**;' + randsk
+            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=' + randsk
       }
     })
     const body = await res1.text()
@@ -242,7 +242,7 @@ const generate = async request => {
       headers:{
         'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.514.1919.810 Safari/537.36',
         'Cookie':'BDUSS=**INPUT YOUR BDUSS HERE**;'
-            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=**INPUT YOUR BDCLND HERE**;' + randsk
+            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=' + randsk
       }
     })
     const body = await res2.text()
@@ -584,7 +584,7 @@ const download = async request => {
       headers:{
         'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.514.1919.810 Safari/537.36',
         'Cookie':'BDUSS=**INPUT YOUR BDUSS HERE**;'
-            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=**INPUT YOUR BDCLND HERE**;' + randsk
+            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=' + randsk
       },
       method:'POST'
       }
@@ -599,7 +599,7 @@ const download = async request => {
     headers:{
       'user-agent': 'LogStatistic',
       'Cookie': 'BDUSS==**INPUT YOUR SVIP BDUSS HERE**;'
-            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=**INPUT YOUR BDCLND HERE**;' + randsk																									 
+            +  'STOKEN=**INPUT YOUR STOKEN HERE**; BDCLND=' + randsk																									 
     },
     redirect:"manual"
   })
