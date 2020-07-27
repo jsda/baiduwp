@@ -9,8 +9,8 @@ const error = `
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <script>
@@ -74,11 +74,11 @@ const filebody = `<!DOCTYPE html>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/sweetalert2.all.min.js"></script>
+<script src="https://cdn.staticfile.org/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 <style>
   body {
     background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
@@ -304,8 +304,8 @@ const landing = `
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <script>
@@ -431,8 +431,8 @@ const helpbody = `<!DOCTYPE html>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <script>
@@ -497,8 +497,8 @@ const dbody = `<!DOCTYPE html>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <script>
