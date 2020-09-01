@@ -15,14 +15,14 @@ const error = `
 <meta name="author" content="Ling Macker"/>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
-<link rel="icon" href="https://github.com/jsda/baiduwp/raw/master/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.css">
-<script src="https://github.com/jsda/baiduwp/raw/master/jquery.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/popper.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.js"></script>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <style>
   body {
-    background-image: url("https://github.com/jsda/baiduwp/raw/master/bg.png");
+    background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
   }
 
   .logo-img {
@@ -48,7 +48,7 @@ const error = `
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <div class="container">
 <a class="navbar-brand" href="${INDEX_URL}">
-<img src="https://github.com/jsda/baiduwp/raw/master/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
+<img src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
 </a>
 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#collpase-bar">
 <span class="navbar-toggler-icon"></span>
@@ -78,15 +78,15 @@ const previewHeader = `<!DOCTYPE html>
 <meta name="author" content="Ling Macker"/>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
-<link rel="icon" href="https://github.com/jsda/baiduwp/raw/master/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.css">
-<script src="https://github.com/jsda/baiduwp/raw/master/jquery.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/popper.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.js"></script>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <script src="https://github.com/MoePlayer/DPlayer/raw/master/dist/DPlayer.min.js"></script>
 <style>
   body {
-    background-image: url("https://github.com/jsda/baiduwp/raw/master/bg.png");
+    background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
   }
 
   .logo-img {
@@ -126,14 +126,14 @@ const previewFooter = `</script>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <div class="container">
 <a class="navbar-brand" href="${INDEX_URL}">
-<img src="https://github.com/jsda/baiduwp/raw/master/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
+<img src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
 </a>
 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#collpase-bar">
 <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="collpase-bar">
 <ul class="navbar-nav">
-<li class="nav-item">	
+<li class="nav-item">
 <a class="nav-link" href="${INDEX_URL}">主页</a>
 </li>
 </ul>
@@ -163,15 +163,15 @@ const filebody = `<!DOCTYPE html>
 <meta name="author" content="Ling Macker"/>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
-<link rel="icon" href="https://github.com/jsda/baiduwp/raw/master/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.css">
-<script src="https://github.com/jsda/baiduwp/raw/master/jquery.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/popper.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/sweetalert2.all.min.js"></script>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/sweetalert2.all.min.js"></script>
 <style>
   body {
-    background-image: url("https://github.com/jsda/baiduwp/raw/master/bg.png");
+    background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
   }
   .logo-img {
     width: 1.1em;
@@ -180,7 +180,7 @@ const filebody = `<!DOCTYPE html>
   }
 </style>
 <meta name="referrer" content="never">
-<link href="https://github.com/jsda/baiduwp/raw/master/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/all.min.css" rel="stylesheet">
 <title>文件列表</title>
 <script>
   function dl(fs_id, timestamp, sign, randsk, share_id, uk) {
@@ -300,7 +300,7 @@ const filebody = `<!DOCTYPE html>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <div class="container">
 <a class="navbar-brand" href="${INDEX_URL}">
-<img src="https://github.com/jsda/baiduwp/raw/master/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
+<img src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
 </a>
 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#collpase-bar">
 <span class="navbar-toggler-icon"></span>
@@ -431,7 +431,7 @@ const generate = async request => {
     const sign = json2.sign
     const timestamp = json2.timestamp
     const shareid = json2.shareid
-    const uk = json2.uk 
+    const uk = json2.uk
     const filejson = await getFileList(shareid,uk,randsk,dir)
     if (dir) {
       const dirParts = dir.split('/')
@@ -457,7 +457,7 @@ filecontent += `<li class="list-group-item border-muted rounded text-muted py-2"
 <span class="float-right"></span>
 </li>`
       }
-      
+
     }
     let filefoot = `</ul>
 </div>
@@ -473,7 +473,7 @@ filecontent += `<li class="list-group-item border-muted rounded text-muted py-2"
 <hr>
 <p class="card-text">提取码错误或文件失效</p>
 </div>` + error_div, { headers })
-    
+
   }
 
 }
@@ -487,14 +487,14 @@ const landing = `
 <meta name="author" content="Ling Macker"/>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
-<link rel="icon" href="https://github.com/jsda/baiduwp/raw/master/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.css">
-<script src="https://github.com/jsda/baiduwp/raw/master/jquery.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/popper.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.js"></script>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <style>
 body {
-background-image: url("https://github.com/jsda/baiduwp/raw/master/bg.png");
+background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
 }
 
 .logo-img {
@@ -563,7 +563,7 @@ return true;
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <div class="container">
 <a class="navbar-brand" href="${INDEX_URL}">
-<img src="https://github.com/jsda/baiduwp/raw/master/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
+<img src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
 </a>
 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#collpase-bar">
 <span class="navbar-toggler-icon"></span>
@@ -610,14 +610,14 @@ const helpbody = `<!DOCTYPE html>
 <meta name="author" content="Ling Macker"/>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
-<link rel="icon" href="https://github.com/jsda/baiduwp/raw/master/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.css">
-<script src="https://github.com/jsda/baiduwp/raw/master/jquery.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/popper.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.js"></script>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <style>
   body {
-    background-image: url("https://github.com/jsda/baiduwp/raw/master/bg.png");
+    background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
   }
 
   .logo-img {
@@ -643,7 +643,7 @@ const helpbody = `<!DOCTYPE html>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <div class="container">
 <a class="navbar-brand" href="${INDEX_URL}">
-<img src="https://github.com/jsda/baiduwp/raw/master/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
+<img src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
 </a>
 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#collpase-bar">
 <span class="navbar-toggler-icon"></span>
@@ -673,12 +673,12 @@ const dbody = `<!DOCTYPE html>
 <meta name="author" content="Ling Macker"/>
 <meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
 <meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
-<link rel="icon" href="https://github.com/jsda/baiduwp/raw/master/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.css">
-<script src="https://github.com/jsda/baiduwp/raw/master/jquery.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/popper.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/sweetalert2.all.min.js"></script>
-<script src="https://github.com/jsda/baiduwp/raw/master/bootstrap.min.js"></script>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
 <script>
 function utoa(str) {
   return window.btoa(unescape(encodeURIComponent(str)));
@@ -709,13 +709,13 @@ async function checkVer(){
 let token = $('#token').val()
 let aria2url = $('#url').val()
 if(token != ""){
-postVer = JSON.stringify({	
+postVer = JSON.stringify({
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
 		  params: ['token:'+token]
 		})}else{
-postVer = JSON.stringify({	
+postVer = JSON.stringify({
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
@@ -746,7 +746,7 @@ const headerOption = ['User-Agent: LogStatistic']
 let post
 let postVer
 if(token != ""){
-postVer = JSON.stringify({	
+postVer = JSON.stringify({
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
@@ -755,7 +755,7 @@ postVer = JSON.stringify({
 post = JSON.stringify({jsonrpc:'2.0',id:'baiduwp',method:'aria2.addUri',params:["token:"+token,[httpurl,httpsurl],{header:headerOption}]})
 }
 else{
-postVer = JSON.stringify({	
+postVer = JSON.stringify({
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
@@ -793,7 +793,7 @@ if(await getVer != null)
 </script>
 <style>
   body {
-    background-image: url("https://github.com/jsda/baiduwp/raw/master/bg.png");
+    background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
   }
 
   .logo-img {
@@ -819,7 +819,7 @@ if(await getVer != null)
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <div class="container">
 <a class="navbar-brand" href="${INDEX_URL}">
-<img src="https://github.com/jsda/baiduwp/raw/master/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
+<img src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
 </a>
 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#collpase-bar">
 <span class="navbar-toggler-icon"></span>
@@ -925,7 +925,7 @@ const getVideo = async request => {
         video: {
             url: 'https://`+realLink+`',
        },
-    logo: 'https://github.com/jsda/baiduwp/raw/master/logo.png',
+    logo: 'https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png',
     })
     })`
   }
@@ -936,7 +936,7 @@ const getVideo = async request => {
         video: {
             url: 'failed',
        },
-    logo: 'https://github.com/jsda/baiduwp/raw/master/logo.png',
+    logo: 'https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png',
     })
     })`
   }
@@ -948,7 +948,7 @@ else{
       video: {
           url: 'failed',
      },
-  logo: 'https://github.com/jsda/baiduwp/raw/master/logo.png',
+  logo: 'https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png',
   })
   })`
 }
@@ -1064,7 +1064,7 @@ async function handleRequest(request) {
     else{
       response = await generate(request)
     }
-    
+
   } else {
     if(url.includes('help')){
       response = new Response(helpbody+`
@@ -1098,7 +1098,7 @@ async function handleRequest(request) {
 <li>保存后点击扩展图标，出现"百度网盘"，进入并选择"百度网盘分享下载"。</li>
 </ol>
 <blockquote>
-<p>Chrome应用商店打不开或者其他Chromium内核的浏览器，<a href="https://github.com/jsda/baiduwp/raw/master/user_agent_switcher_1_0_43_0.crx" target="_blank">请点此下载</a></p>
+<p>Chrome应用商店打不开或者其他Chromium内核的浏览器，<a href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/user_agent_switcher_1_0_43_0.crx" target="_blank">请点此下载</a></p>
 <p><a href="https://appcenter.browser.qq.com/search/detail?key=User-Agent%20Switcher%20for%20Chrome&amp;id=djflhoibgkdhkhhcedjiklpkjnoahfmg%20&amp;title=User-Agent%20Switcher%20for%20Chrome" target="_blank">QQ浏览器插件下载</a></p>
 </blockquote>
 <h4>Pure浏览器（Android）</h4>
