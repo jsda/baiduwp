@@ -1,3 +1,7 @@
+#wget https://github.com/FortAwesome/Font-Awesome/raw/master/css/all.min.css
+#wget https://github.com/twbs/bootstrap/raw/main/dist/css/bootstrap.min.css
+#wget https://github.com/jquery/jquery-dist/raw/master/dist/jquery.min.js
+
 wget https://github.com/TkzcM/baiduwp/raw/master/index.js && \
 sed -i "s/https:\/\/cdn.staticfile.org\/twitter-bootstrap\/4.1.2\/css/https:\/\/github.com\/jsda\/baiduwp\/raw\/master/" index.js && \
 sed -i "s/https:\/\/cdn.staticfile.org\/jquery\/3.2.1/https:\/\/github.com\/jsda\/baiduwp\/raw\/master/" index.js && \
