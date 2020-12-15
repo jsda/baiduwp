@@ -1,9 +1,103 @@
 const BDUSS = '' //**INPUT YOUR BDUSS HERE**
 const STOKEN = '' //**INPUT YOUR STOKEN HERE**
 const SVIPBDUSS = '' //**INPUT YOUR SVIP BDUSS HERE**
+const SVIPSTOKEN = '' //**INPUT YOUR SVIP STOKEN HERE** (optional, rapid need) 
 const INDEX_URL = '' // Input your index url here
 const AUTH_USER = '' //**INPUT BASIC AUTH USERNAME (optional)**
 const AUTH_PASS = '' //**INPUT BASIC AUTH SUPER SECRET PASSWORD (optional)**
+
+const pwdBody = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Ling Macker"/>
+<meta name="description" content="PanDownload网页版,百度网盘分享链接在线解析工具"/>
+<meta name="keywords" content="PanDownload,百度网盘,分享链接,下载,不限速"/>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/bootstrap.min.js"></script>
+<style>
+  body {
+    background-image: url("https://cdn.jsdelivr.net/gh/jsda/baiduwp/bg.png");
+  }
+
+  .logo-img {
+    width: 1.1em;
+    position: relative;
+    top: -3px;
+  }
+</style>
+<meta name="referrer" content="never">
+<title>请输入提取码</title>
+<style>
+    .alert {
+	  background-color: #FFFFFF;
+      position: relative;
+      top: 5em;
+    }
+
+    .alert-heading {
+
+      height: 0.8em;
+    }
+  </style>
+ <script>
+$(function(){
+	Swal.fire({
+	title: '请输入提取码',
+	input: 'text',
+	inputAttributes: {
+	autocapitalize: 'off'
+	},
+	allowOutsideClick: false,
+	showCancelButton: false,
+	confirmButtonText: '提取文件',
+	preConfirm: (pwd) => {
+  const url = document.URL
+  let surl
+  if(url.includes('/s/1')){
+    surl = url.match(/\\/s\\/(1.+)/)[1]
+  }
+  else if(url.includes('/share/init?surl=')){
+    surl ='1'+ url.match(/init\\?surl=([0-9a-zA-Z_]+)/)[1]
+
+  }
+	$(document).ready(function(){
+    $('<form action="/" method="POST"><input type="hidden" name="surl" value="' + surl + '"><input type="hidden" name="pwd" value="' + pwd + '"></form>').appendTo('body').submit();
+	})
+	}
+	})
+  })
+  </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="container">
+<a class="navbar-brand" href="${INDEX_URL}">
+<img src="https://cdn.jsdelivr.net/gh/jsda/baiduwp/logo.png" class="img-fluid rounded logo-img mr-2" alt="LOGO">PanDownload
+</a>
+<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#collpase-bar">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="collpase-bar">
+<ul class="navbar-nav">
+<li class="nav-item">	
+<a class="nav-link" href="${INDEX_URL}">主页</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/TkzcM/baiduwp" target="_blank">GitHub</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</body>
+</html>`
 
 const rapidhtml = `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -58,8 +152,8 @@ height: 3em;
   function atou(str) {
     return decodeURIComponent(escape(window.atob(str)));
   }
-  function Trim(str){
-    return str.replace(/(^\\s*)|(\\s*$)/g, "");
+  function Trim(str){  
+    return str.replace(/(^\\s*)|(\\s*$)/g, "");  
   }
   function dl(md5, slicemd5, flength, name) {
     var form = $('<form method="post" action="/rapiddl" target="_blank"></form>');
@@ -399,8 +493,11 @@ const previewFooter = `</script>
 </button>
 <div class="collapse navbar-collapse" id="collpase-bar">
 <ul class="navbar-nav">
-<li class="nav-item">
+<li class="nav-item">	
 <a class="nav-link" href="${INDEX_URL}">主页</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/TkzcM/baiduwp" target="_blank">GitHub</a>
 </li>
 </ul>
 </div>
@@ -527,7 +624,7 @@ const filebody = `<!DOCTYPE html>
     }
     return "";
   }
-  function goToDir(surl, pwd, randsk, dir) {
+  function goToDir(surl, pwd, randsk, shareid, uk, dir) {
     var $form = $('<form>').attr('method', 'POST');
     var appendFormItem = function(key, value) {
       $form.append($('<input>').attr('type', 'hidden').attr('name', key).attr('value', value));
@@ -536,6 +633,8 @@ const filebody = `<!DOCTYPE html>
     appendFormItem('surl', surl);
     appendFormItem('pwd', pwd);
     appendFormItem('randsk', randsk);
+    appendFormItem('shareid', shareid);
+    appendFormItem('uk', uk);
     appendFormItem('dir', dir);
 
     $form.appendTo($('body')).submit();
@@ -595,12 +694,63 @@ const error_div = `</div>
 </body>
 </html>`
 
+const parseLink = async request => {
+  const url = await request.url
+  let innerRequest
+  if(url.includes('/s/1')){
+    const surl = url.match(/\/s\/(1[0-9a-zA-Z_-]+)/)[1]
+    const isPwd = await fetch('https://pan.baidu.com/s/'+surl,{
+      method:'HEAD',
+      redirect:'manual'
+    })
+    if(isPwd.status == 302){
+      return new Response(pwdBody,{ headers: { 'Content-Type': 'text/html;charset=UTF-8' } })
+    }
+    else if(isPwd.status == 200){
+      innerRequest = new Request('https://example.com/',{method:'POST',body:'surl='+surl,headers:{'Content-Type':'application/x-www-form-urlencoded'}})
+      return await generate(innerRequest)
+    }
+    else{
+      return new Response(error + `
+      <div class="alert alert-danger" role="alert">
+<h5 class="alert-heading">提示</h5>
+<hr>
+<p class="card-text">CheckPwd Failed</p>
+</div>` + error_div,{ headers: { 'Content-Type': 'text/html;charset=UTF-8' } })
+    }
+  }
+  else if(url.includes('/init?surl=')){
+    const surl = url.match(/init\?surl=([0-9a-zA-Z_-]+)/)[1]
+    const surl1 = '1'+ surl
+    const isPwd = await fetch('https://pan.baidu.com/s/'+surl1,{
+      method:'HEAD',
+      redirect:'manual'
+    })
+    if(isPwd.status == 302){
+      return new Response(pwdBody,{ headers: { 'Content-Type': 'text/html;charset=UTF-8' } })
+    }
+    else if(isPwd.status == 200){
+      innerRequest = new Request('https://example.com/',{method:'POST',body:'surl='+surl1,headers:{'Content-Type':'application/x-www-form-urlencoded'}})
+      return await generate(innerRequest)
+    }
+    else{
+      return new Response(error + `
+      <div class="alert alert-danger" role="alert">
+<h5 class="alert-heading">提示</h5>
+<hr>
+<p class="card-text">CheckPwd Failed</p>
+</div>` + error_div,{ headers: { 'Content-Type': 'text/html;charset=UTF-8' } })
+    }
+  }
+}
 
 const generate = async request => {
   const text = await request.formData()
   const surl = text.get('surl')
   const pwd = text.get('pwd')
   const dir = text.get('dir')
+  const uk = text.get('uk') || ''
+  const shareid = text.get('shareid') || ''
   let randsk = text.get('randsk')
   const headers = { 'Content-Type': 'text/html;charset=UTF-8' }
   const surl_1 = surl.substring(1)
@@ -608,7 +758,7 @@ const generate = async request => {
     if(pwd){
       let formData1 = new FormData()
       formData1.append('pwd',pwd)
-      const res = await fetch('https://pan.baidu.com/share/verify?channel=chunlei&clienttype=0&web=1&app_id=250528&surl='+surl_1,
+      const res = await fetch(`https://pan.baidu.com/share/verify?channel=chunlei&clienttype=0&web=1&app_id=250528&${surl_1 ? `surl=${surl_1}` : `uk=${uk}&shareid=${shareid}`}`,
       {
         body: formData1,
         method: 'POST',
@@ -627,7 +777,7 @@ const generate = async request => {
         }
     }
     else{
-      const res = await fetch('https://pan.baidu.com/s/1'+surl,{
+      const res = await fetch(surl ? 'https://pan.baidu.com/s/1' + surl : `https://pan.baidu.com/share/link?uk=${uk}&shareid=${shareid}`,{
         redirect:"manual"
       })
       if(res.status == 302){
@@ -647,7 +797,7 @@ const generate = async request => {
     if(randsk == 1){
       return 1
     }
-    const res1 = await fetch('https://pan.baidu.com/s/1'+surl,
+    const res1 = await fetch(surl ? 'https://pan.baidu.com/s/1' + surl : `https://pan.baidu.com/share/link?uk=${uk}&shareid=${shareid}`,
     {
       method:'GET',
       headers:{
@@ -697,13 +847,21 @@ const generate = async request => {
     const sign = json2.sign
     const timestamp = json2.timestamp
     const shareid = json2.shareid
-    const uk = json2.uk
+    const uk = json2.uk 
     const filejson = await getFileList(shareid,uk,randsk,dir)
+    if (filejson.errno) {
+      return new Response(error + `
+          <div class="alert alert-danger" role="alert">
+      <h5 class="alert-heading">提示</h5>
+      <hr>
+      <p class="card-text">${filejson.show_msg || '提取码错误或文件失效'}</p>
+      </div>` + error_div, { headers })
+    }
     if (dir) {
       const dirParts = dir.split('/')
       filecontent += `<li class="list-group-item border-muted rounded text-muted py-2" style="margin-bottom: 10px">
         <i class="far fa-folder-open mr-2"></i>
-        ${dirParts.map((e, i) => `<a href="javascript:void(0)" onclick="goToDir('${surl}', '${pwd}', '${randsk}', '${dirParts.slice(0, i + 1).join('/')}')">${e}/</a>`).join('')}
+        ${dirParts.map((e, i) => `<a href="javascript:void(0)" onclick="goToDir('${surl}', '${pwd}', '${randsk}', '${shareid}', '${uk}', '${dirParts.slice(0, i + 1).join('/')}')">${e}/</a>`).join('')}
         <span class="float-right"></span>
       </li>`
     }
@@ -719,11 +877,11 @@ filecontent += `<li class="list-group-item border-muted rounded text-muted py-2"
       else {
 filecontent += `<li class="list-group-item border-muted rounded text-muted py-2">
 <i class="far fa-folder mr-2"></i>
-<a href="javascript:void(0)" onclick="goToDir('${surl}', '${pwd}', '${randsk}', '${file.path}')">`+file.server_filename+`</a>
+<a href="javascript:void(0)" onclick="goToDir('${surl}', '${pwd}', '${randsk}', '${shareid}', '${uk}', '${file.path}')">`+file.server_filename+`</a>
 <span class="float-right"></span>
 </li>`
       }
-
+      
     }
     let filefoot = `</ul>
 </div>
@@ -739,7 +897,7 @@ filecontent += `<li class="list-group-item border-muted rounded text-muted py-2"
 <hr>
 <p class="card-text">提取码错误或文件失效</p>
 </div>` + error_div, { headers })
-
+    
   }
 
 }
@@ -798,8 +956,8 @@ if (link == null || link == "") {
 document.forms["form1"]["surl"].focus();
 return false;
 }
-var uk = link.match(/uk=(\d+)/);
-var shareid = link.match(/shareid=(\d+)/);
+var uk = link.match(/uk=(\\d+)/);
+var shareid = link.match(/shareid=(\\d+)/);
 if (uk != null && shareid != null) {
 document.forms["form1"]["surl"].value = "";
 $("form").append('<input type="hidden" name="uk" value="' + uk[1] + '">');
@@ -861,7 +1019,7 @@ return true;
 <button type="submit" class="mt-4 mb-3 form-control btn btn-success btn-block">打开</button>
 </form>
 <div class="text-center">
-<a href="./rapid">秒传链接解析 (WIP)</a>
+<a href="./rapid">秒传链接解析 (Beta)</a>
 </div>
 </div>
 </div>
@@ -933,6 +1091,60 @@ const helpbody = `<!DOCTYPE html>
 <div class="row justify-content-center">
 <div class="col-md-7 col-sm-8 col-11">`
 
+const helptext = `
+<div class="alert alert-primary" role="alert">
+<h5 class="alert-heading">提示</h5>
+<hr>
+<p class="card-text">因百度限制，需修改浏览器UA后下载。<br>
+<div class="page-inner">
+<section class="normal" id="section-">
+<h4>Motrix（PC推荐）</h4>
+<ol>
+<li>启动 Motrix</li>
+<li>下载页面 推送到aria2 –&gt; 地址填入 http://127.0.0.1:16800/jsonrpc –&gt; 点击 Send</li>
+</ol>
+<h4>ADM Pro（Android推荐）</h4>
+<ol>
+<li>设置 –&gt; 下载中 –&gt; 浏览器标识 –&gt; 自定义 浏览器标识</li>
+<li>填入： LogStatistic</li>
+<li>切换到浏览器，长按“下载链接”，选择复制链接地址</li>
+<li>在ADM中添加任务并开始</li>
+</ol>
+<h4>IDM</h4>
+<ol>
+<li>选项 -> 下载 -> 手动添加任务时使用的用户代理（UA）-> 填入 <b>LogStatistic</b></li>
+<li>右键复制下载链接，在 IDM 新建任务，粘贴链接即可下载。</li>
+</ol>
+<h4>Chrome浏览器</h4>
+<ol>
+<li>安装浏览器扩展程序 <a href="https://chrome.google.com/webstore/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg" target="_blank">User-Agent Switcher for Chrome</a></li>
+<li>右键点击扩展图标 -> 选项</li>
+<li>New User-agent name 填入 百度网盘分享下载</li>
+<li>New User-Agent String 填入 LogStatistic</li>
+<li>Group 填入 百度网盘</li>
+<li>Append? 选择 Replace</li>
+<li>Indicator Flag 填入 Log，点击 Add 保存</li>
+<li>保存后点击扩展图标，出现"百度网盘"，进入并选择"百度网盘分享下载"。</li>
+</ol>
+<blockquote>
+<p>Chrome应用商店打不开或者其他Chromium内核的浏览器，<a href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/user_agent_switcher_1_0_43_0.crx" target="_blank">请点此下载</a></p>
+<p><a href="https://appcenter.browser.qq.com/search/detail?key=User-Agent%20Switcher%20for%20Chrome&amp;id=djflhoibgkdhkhhcedjiklpkjnoahfmg%20&amp;title=User-Agent%20Switcher%20for%20Chrome" target="_blank">QQ浏览器插件下载</a></p>
+</blockquote>
+<h4>Pure浏览器（Android）</h4>
+<ol>
+<li>设置 –&gt; 浏览设置 -&gt; 浏览器标识(UA)</li>
+<li>添加自定义UA：LogStatistic</li>
+</ol>
+<h4>Alook浏览器（IOS）</h4>
+<ol>
+<li>设置 -&gt; 通用设置 -&gt; 浏览器标识 -&gt; 移动版浏览器标识 -&gt; 自定义 -><br> 填入 <b>LogStatistic</b></li>
+</ol>
+</section>
+</div>
+</p>
+</div>
+`
+
 const dbody = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -978,13 +1190,13 @@ async function checkVer(){
 let token = $('#token').val()
 let aria2url = $('#url').val()
 if(token != ""){
-postVer = JSON.stringify({
+postVer = JSON.stringify({	
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
 		  params: ['token:'+token]
 		})}else{
-postVer = JSON.stringify({
+postVer = JSON.stringify({	
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
@@ -1015,7 +1227,7 @@ const headerOption = ['User-Agent: LogStatistic']
 let post
 let postVer
 if(token != ""){
-postVer = JSON.stringify({
+postVer = JSON.stringify({	
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
@@ -1024,7 +1236,7 @@ postVer = JSON.stringify({
 post = JSON.stringify({jsonrpc:'2.0',id:'baiduwp',method:'aria2.addUri',params:["token:"+token,[httpurl,httpsurl],{header:headerOption}]})
 }
 else{
-postVer = JSON.stringify({
+postVer = JSON.stringify({	
 		  jsonrpc: '2.0',
 		  method: 'aria2.getVersion',
 		  id: 'baiduwp',
@@ -1149,8 +1361,86 @@ const dlRapid = async request => {
   const slicemd5 = form.get('slicemd5')
   const flength = form.get('flength')
   const filename = form.get('name')
-  // TODO: sercet download method, implement yourself.
-  return new Response('WIP, check progress: https://github.com/TkzcM/baiduwp',{ headers: {'Content-Type': 'text/html;charset=UTF-8'} })
+  let dresult
+  const header = {
+    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.514.1919.810 Safari/537.36',
+    'Cookie':'BDUSS=' + SVIPBDUSS + '; '
+    +  'STOKEN=' + SVIPSTOKEN + ';'
+  }
+  const getbdstoken = await fetch('https://pan.baidu.com/disk/home',{
+    headers:header
+  })
+  const re = /locals\.set\(\'bdstoken\'\, \'([A-Za-z0-9]{32})/
+  let bdstoken
+  try{
+    bdstoken = (await getbdstoken.text()).match(re)[1]
+  }
+  catch{
+    dresult = `<div class="alert alert-danger" role="alert">
+    <h5 class="alert-heading">获取下载链接失败</h5>
+    <hr>
+    <p class="card-text">Get bdstoken Failed</p>
+    </div>`
+    return new Response(dbody+dresult+dfooter,{headers:{'Content-Type':'text/html;charset=UTF-8'}})
+  }
+  const formData = new FormData()
+  formData.append('content-md5',md5)
+  formData.append('slice-md5',slicemd5)
+  formData.append('path','/baiduwp/'+new Date().getTime()+'/'+filename)
+  formData.append('content-length',flength)
+
+  const saveFile = await fetch('https://pan.baidu.com/api/rapidupload?app_id=250528&bdstoken='+bdstoken+'&channel=chunlei&clienttype=0&rtype=1&web=1',{
+    headers:header,
+    method:'POST',
+    body:formData
+  })
+  const fjson = JSON.parse(await saveFile.text())
+  if(fjson['errno'] === 0){
+    const path = fjson['info']['path']
+    const timestamp = Math.round(new Date().getTime() / 1000)
+    const postData = 'app_id=250528&check_blue=1&es=1&esl=1&ver=2&dtype=1&err_ver=1.0&ehps=0&channel=00000000000000000000000000000000&vip=2&path='+encodeURIComponent(path)+
+    '&time='+ timestamp + '&devuid=O|00000000000000000000000000000000&clienttype=20' // TODO: add rand to get high speed link (decompile UWP/Android/PC client)
+    const getRealLink = await fetch('https://d.pcs.baidu.com/rest/2.0/pcs/file?method=locatedownload',{
+      headers:{
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        'user-agent': 'LogStatistic',
+        'Cookie': 'BDUSS=' + SVIPBDUSS + ';'
+      },
+      method:'POST',
+      body: postData
+    })
+    const dldata = JSON.parse(await getRealLink.text())
+    if(getRealLink.status == 200){
+      realLink = dldata['urls'][0]['url'].replace(/http[s]*:\/\//,'') // TODO: replace a parameter to bypass thread limit
+    dresult = `<div class="alert alert-primary" role="alert">
+      <h5 class="alert-heading" id="alert">获取下载链接成功</h5>
+      <hr>
+      <p class="card-text" id="text">推荐使用aria2c 线程数64<br>
+      <a id="http" style="display:none;" href="http://`+realLink+`" target=_blank>下载链接(http)</a>
+      <a id="https" href="https://`+realLink+`" target=_blank>下载链接(https)</a>
+      <br><br>
+      <a href=javascript:void(0) id="aria2" data-toggle="modal" data-target="#exampleModal">推送到Aria2</a>
+      <br><br>
+      <a href="./help" id="help">下载链接使用方法（必读）</a></p>
+      </div>`
+    }
+    else{
+      dresult = `<div class="alert alert-danger" role="alert">
+      <h5 class="alert-heading">获取下载链接失败</h5>
+      <hr>
+      <p class="card-text">Get Direct Link Failed</p>
+      </div>`
+    }
+    return new Response(dbody+dresult+dfooter, { headers: {'Content-Type': 'text/html;charset=UTF-8'} })
+  }
+  else {
+    dresult = `<div class="alert alert-danger" role="alert">
+    <h5 class="alert-heading">获取下载链接失败</h5>
+    <hr>
+    <p class="card-text">Save File Failed</p>
+    </div>`
+    return new Response(dbody+dresult+dfooter,{headers:{'Content-Type':'text/html;charset=UTF-8'}})
+  }
 }
 
 const getVideo = async request => {
@@ -1346,57 +1636,13 @@ async function handleRequest(request) {
     else{
       response = await generate(request)
     }
-
+    
   } else {
     if(url.includes('help')){
-      response = new Response(helpbody+`
-      <div class="alert alert-primary" role="alert">
-<h5 class="alert-heading">提示</h5>
-<hr>
-<p class="card-text">因百度限制，需修改浏览器UA后下载。<br>
-<div class="page-inner">
-<section class="normal" id="section-">
-<h4>IDM（推荐）</h4>
-<ol>
-<li>选项 -> 下载 -> 手动添加任务时使用的用户代理（UA）-> 填入 <b>LogStatistic</b></li>
-<li>右键复制下载链接，在 IDM 新建任务，粘贴链接即可下载。</li>
-</ol>
-<h4>ADM Pro（Android推荐）</h4>
-<ol>
-<li>设置 –&gt; 下载中 –&gt; 浏览器标识 –&gt; 自定义 浏览器标识</li>
-<li>填入： LogStatistic</li>
-<li>切换到浏览器（ADM留在后台），长按“下载链接”，选择复制链接地址</li>
-<li>然后在ADM这里点击开始即可</li>
-</ol>
-<h4>Chrome浏览器</h4>
-<ol>
-<li>安装浏览器扩展程序 <a href="https://chrome.google.com/webstore/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg" target="_blank">User-Agent Switcher for Chrome</a></li>
-<li>右键点击扩展图标 -> 选项</li>
-<li>New User-agent name 填入 百度网盘分享下载</li>
-<li>New User-Agent String 填入 LogStatistic</li>
-<li>Group 填入 百度网盘</li>
-<li>Append? 选择 Replace</li>
-<li>Indicator Flag 填入 Log，点击 Add 保存</li>
-<li>保存后点击扩展图标，出现"百度网盘"，进入并选择"百度网盘分享下载"。</li>
-</ol>
-<blockquote>
-<p>Chrome应用商店打不开或者其他Chromium内核的浏览器，<a href="https://cdn.jsdelivr.net/gh/jsda/baiduwp/user_agent_switcher_1_0_43_0.crx" target="_blank">请点此下载</a></p>
-<p><a href="https://appcenter.browser.qq.com/search/detail?key=User-Agent%20Switcher%20for%20Chrome&amp;id=djflhoibgkdhkhhcedjiklpkjnoahfmg%20&amp;title=User-Agent%20Switcher%20for%20Chrome" target="_blank">QQ浏览器插件下载</a></p>
-</blockquote>
-<h4>Pure浏览器（Android）</h4>
-<ol>
-<li>设置 –&gt; 浏览设置 -&gt; 浏览器标识(UA)</li>
-<li>添加自定义UA：LogStatistic</li>
-</ol>
-<h4>Alook浏览器（IOS）</h4>
-<ol>
-<li>设置 -&gt; 通用设置 -&gt; 浏览器标识 -&gt; 移动版浏览器标识 -&gt; 自定义 -><br> 填入 <b>LogStatistic</b></li>
-</ol>
-</section>
-</div>
-</p>
-</div>
-      `+dfooter, { headers: { 'Content-Type': 'text/html;charset=UTF-8' } })
+      response = new Response(helpbody+helptext+dfooter, { headers: { 'Content-Type': 'text/html;charset=UTF-8' } })
+    }
+    else if(url.includes('/s/1') || url.includes('/init?surl=')){
+      response = await parseLink(request)
     }
     else if(url.includes('rapid')){
       response = new Response(rapidhtml, { headers: { 'Content-Type': 'text/html;charset=UTF-8' } })
